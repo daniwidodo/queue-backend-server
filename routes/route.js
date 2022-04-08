@@ -1,12 +1,12 @@
 const express = require('express')
 const app = express()
-const employeeRoute = express.Router()
+const visitorEmployee = express.Router()
 
 // Employee model
 let Employee = require('../models/Visitor')
 
 // Add Employee
-employeeRoute.route('/create').post((req, res, next) => {
+visitorEmployee.route('/create').post((req, res, next) => {
   Employee.create(req.body, (error, data) => {
     if (error) {
       return next(error)
@@ -17,7 +17,7 @@ employeeRoute.route('/create').post((req, res, next) => {
 })
 
 // Get All Employees
-employeeRoute.route('/').get((req, res) => {
+visitorEmployee.route('/').get((req, res) => {
   Employee.find((error, data) => {
     if (error) {
       return next(error)
@@ -28,7 +28,7 @@ employeeRoute.route('/').get((req, res) => {
 })
 
 // Get single employee
-employeeRoute.route('/read/:id').get((req, res) => {
+visitorEmployee.route('/read/:id').get((req, res) => {
   Employee.findById(req.params.id, (error, data) => {
     if (error) {
       return next(error)
@@ -39,7 +39,7 @@ employeeRoute.route('/read/:id').get((req, res) => {
 })
 
 // Update employee
-employeeRoute.route('/update/:id').put((req, res, next) => {
+visitorEmployee.route('/update/:id').put((req, res, next) => {
   Employee.findByIdAndUpdate(
     req.params.id,
     {
@@ -58,7 +58,7 @@ employeeRoute.route('/update/:id').put((req, res, next) => {
 })
 
 // Delete employee
-employeeRoute.route('/delete/:id').delete((req, res, next) => {
+visitorEmployee.route('/delete/:id').delete((req, res, next) => {
   Employee.findOneAndRemove(req.params.id, (error, data) => {
     if (error) {
       return next(error)
@@ -70,4 +70,4 @@ employeeRoute.route('/delete/:id').delete((req, res, next) => {
   })
 })
 
-module.exports = employeeRoute
+module.exports = visitorEmployee
