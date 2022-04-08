@@ -3,7 +3,7 @@ const app = express()
 const employeeRoute = express.Router()
 
 // Employee model
-let Employee = require('../models/Employee')
+let Employee = require('../models/Visitor')
 
 // Add Employee
 employeeRoute.route('/create').post((req, res, next) => {

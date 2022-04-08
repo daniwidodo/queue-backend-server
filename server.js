@@ -3,10 +3,11 @@ const path = require('path')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const bodyParser = require('body-parser')
+const createError = require('http-errors');
 
 // Connecting with mongo db
 mongoose
-  .connect('mongodb://127.0.0.1:27017/mydatabase')
+  .connect('mongodb://127.0.0.1:27017/visitor')
   .then((x) => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -15,7 +16,7 @@ mongoose
   })
 
 // Setting up port with express js
-const employeeRoute = require('./routes/employee.route')
+const employeeRoute = require('./routes/route')
 const app = express()
 app.use(bodyParser.json())
 app.use(
