@@ -6,7 +6,7 @@ const bodyParser = require('body-parser')
 
 // Connecting with mongo db
 mongoose
-  .connect('mongodb+srv://mongo:<password>@cluster0.1mmyj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+  .connect('mongodb://127.0.0.1:27017/mydatabase')
   .then((x) => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
